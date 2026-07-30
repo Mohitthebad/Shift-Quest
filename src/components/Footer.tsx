@@ -17,14 +17,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToCTA }) => 
     <footer className="bg-[#161B20] text-white font-caption text-caption w-full flex flex-col items-center gap-stack-md px-margin-mobile py-stack-lg border-t border-white/10 relative">
       <div className="max-w-container-max w-full grid grid-cols-1 md:grid-cols-3 gap-stack-lg items-start border-b border-white/10 pb-stack-lg">
         <div className="space-y-4">
-          <span
-            className="font-headline-sm text-headline-sm text-on-primary font-bold cursor-pointer"
+          <div
+            className="flex items-center cursor-pointer group"
             onClick={(e) => handleNav(e, "home")}
           >
-            ShiftQuest Consulting
-          </span>
+            <img
+              alt="ShiftQuest logo"
+              className="h-14 w-auto object-contain brightness-0 invert opacity-95 transition-opacity group-hover:opacity-100"
+              src="/logo-transparent.png"
+            />
+          </div>
           <p className="text-surface-variant max-w-xs leading-relaxed">
-            Transforming organizations through structured HR advisory, industrial relations governance, and ICF executive mentorship.
+            Transforming Potential into Performance through structured HR advisory, industrial relations governance, and ICF executive mentorship.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-stack-md">

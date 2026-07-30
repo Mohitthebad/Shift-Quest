@@ -75,19 +75,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             : "bg-surface/90 backdrop-blur-md border-b border-outline-variant/30"
         }`}
       >
-        {/* Brand Logo & Name */}
+        {/* Brand Logo */}
         <div
-          className="flex items-center gap-3 cursor-pointer group"
+          className="flex items-center cursor-pointer group"
           onClick={(e) => handleNav(e, "home")}
         >
           <img
             alt="ShiftQuest logo"
-            className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-105"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzCsdtPpmgnDkxLi1fbuTeZQAH73y_YruPYbAGlAfl68hXxu83FI6U1EOwYfVaPnM94CE4rCs9hJ4m7EQGU7mfonM0owJv-baxzq22xBFIwemHOq0kYmd5C36Wu1l7VMEOiOZaPrUWaYOxPUvGE2nTp9lJ-ef4x7DpiOoipF411tMERn1efiYCNvFjJjWaHJ4GSCjXRMAAJ1KHTfi_T4Y4wXExwx_EUoAj3SmsKhAD--rxwLAwiaYdopeoidRF7BJoBYkBnrn-Rznr"
+            className="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            src="/logo-transparent.png"
           />
-          <span className="font-headline-sm text-headline-sm font-bold text-primary tracking-tight">
-            ShiftQuest Consulting
-          </span>
         </div>
 
         {/* Desktop Navigation Links */}
@@ -381,11 +378,15 @@ export const Navbar: React.FC<NavbarProps> = ({
         }`}
       >
         <div className="flex justify-between items-center mb-6 pb-4 border-b border-outline-variant/30">
-          <div>
-            <div className="font-headline-sm text-headline-sm font-bold text-primary">ShiftQuest</div>
-            <div className="text-caption font-label-md uppercase tracking-wider text-secondary">
-              Strategic HR &amp; IR Advisory
-            </div>
+          <div
+            className="cursor-pointer"
+            onClick={(e) => handleNav(e, "home")}
+          >
+            <img
+              alt="ShiftQuest logo"
+              className="h-12 w-auto object-contain"
+              src="/logo-transparent.png"
+            />
           </div>
           <button
             className="p-2 text-on-surface-variant hover:text-primary rounded-lg focus:outline-none"

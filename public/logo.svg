@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" width="100%" height="100%">
+  <g fill="#244B6D" transform="translate(150, 10)">
+    <!-- S Upper Loop & Base Line -->
+    <path d="M 175 25 C 130 25 105 50 105 88 C 105 125 132 144 170 158 C 152 163 134 172 120 184 L 102 184 C 94 184 90 189 90 195 C 90 201 94 206 102 206 L 138 206 L 210 95 L 192 95 C 164 95 132 88 132 66 C 132 50 148 43 172 43 C 190 43 208 49 220 57 L 232 41 C 215 31 195 25 175 25 Z" />
+
+    <!-- Arrow Shaft & Arrowhead -->
+    <path d="M 120 206 L 222 50 L 210 42 L 248 28 L 236 66 L 226 55 L 128 206 Z" />
+
+    <!-- Q Outer & Inner Oval Loop + Tail -->
+    <path d="M 190 92 C 142 92 120 130 120 178 C 120 228 152 256 195 256 C 215 256 230 248 242 235 L 258 254 C 261 257 266 256 269 252 L 278 240 C 280 237 279 232 275 228 L 256 208 C 262 198 266 186 266 173 C 266 125 234 92 190 92 Z M 192 112 C 220 112 238 136 238 173 C 238 188 233 202 225 212 L 189 168 C 186 164 181 164 177 167 L 167 176 C 164 179 163 184 167 188 L 204 231 C 200 234 195 236 190 236 C 166 236 148 214 148 176 C 148 138 166 112 192 112 Z" />
+  </g>
+
+  <!-- Brand Typography -->
+  <!-- SHIFT QUEST Header -->
+  <text x="300" y="340" text-anchor="middle" font-family="'Optima', 'Cinzel', 'Trajan Pro', 'Times New Roman', serif" font-size="42" font-weight="600" letter-spacing="14" fill="#244B6D">SHIFT QUEST</text>
+
+  <!-- Subtitle flanked by em-dashes -->
+  <g fill="#244B6D" stroke="#244B6D">
+    <line x1="55" y1="385" x2="160" y2="385" stroke-width="2.5" />
+    <text x="300" y="393" text-anchor="middle" font-family="'Montserrat', 'Helvetica', 'Arial', sans-serif" font-size="19" font-weight="600" letter-spacing="9" stroke="none">CONSULTING LLP</text>
+    <line x1="440" y1="385" x2="545" y2="385" stroke-width="2.5" />
+  </g>
+
+  <!-- Tagline -->
+  <text x="300" y="445" text-anchor="middle" font-family="'Georgia', 'Garamond', 'Playfair Display', serif" font-style="italic" font-size="21" letter-spacing="1.2" fill="#244B6D">Transforming Potential into Performance</text>
+</svg>
