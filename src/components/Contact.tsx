@@ -192,6 +192,7 @@ export const Contact: React.FC<ContactProps> = ({ isOpen, onClose }) => {
                         <option value="HR & Organization Transformation">HR &amp; Organization Transformation</option>
                         <option value="Board Governance Advisory">Board Governance Advisory</option>
                         <option value="General Leadership Briefing">General Leadership Briefing</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
 

@@ -9,30 +9,58 @@ export const EngagementProcessSection: React.FC = () => {
     {
       num: "01",
       icon: "manage_search",
-      title: "Discovery & HR Diagnostic",
-      desc: "Comprehensive evaluation of existing workforce dynamics, governance risks, legal compliance, and organizational bottlenecks.",
-      details: ["Legal & Statutory Audit", "Workforce Risk Assessment", "Leadership Alignment Gaps"],
+      title: "Discovery & Business Assessment",
+      desc: "We begin by understanding your business, operational challenges, strategic objectives, organizational structure, and current capabilities to identify opportunities, risks, and transformation priorities.",
+      details: [
+        "Business & Operational Assessment",
+        "Stakeholder Discovery Workshops",
+        "Current State Analysis",
+        "Risk & Opportunity Identification",
+        "Initial Recommendations",
+      ],
+      phaseFooter: "Phase 01 • Discovery",
     },
     {
       num: "02",
       icon: "architecture",
-      title: "Strategic Architecture",
-      desc: "Designing tailored C-suite, ER, and labor relations roadmaps aligned with long-term corporate growth and fiscal goals.",
-      details: ["Organization Blueprint", "ER Policy Framework", "Governance Guidelines"],
+      title: "Strategy & Solution Design",
+      desc: "Based on our findings, we design a tailored transformation roadmap, governance model, execution framework, and measurable business outcomes aligned with your long-term vision.",
+      details: [
+        "Transformation Roadmap",
+        "Operating Model Design",
+        "Governance Framework",
+        "Success Metrics & KPIs",
+        "Executive Alignment",
+      ],
+      phaseFooter: "Phase 02 • Strategy",
     },
     {
       num: "03",
       icon: "handshake",
-      title: "Leadership & Union Engagement",
-      desc: "Direct engagement with executive boards, management teams, and labor unions to build trust and collaborative alignment.",
-      details: ["Union Negotiations", "Wage Settlement Structuring", "Board Alignment"],
+      title: "Implementation & Change Enablement",
+      desc: "Our consultants work alongside your leadership teams to execute initiatives, manage change, optimize processes, and ensure smooth adoption across the organization.",
+      details: [
+        "Program Execution",
+        "Change Management",
+        "Process Optimization",
+        "Leadership Enablement",
+        "Performance Tracking",
+      ],
+      phaseFooter: "Phase 03 • Execution",
     },
     {
       num: "04",
       icon: "verified",
-      title: "Execution & Governance",
-      desc: "Hands-on implementation of wage settlements, leadership coaching, and organizational systems with measurable business outcomes.",
-      details: ["ICF Executive Coaching", "Statutory Compliance Systems", "Sustained High-Performance Culture"],
+      title: "Performance, Governance & Continuous Improvement",
+      desc: "Transformation doesn't stop after implementation. We continuously monitor performance, refine strategies, strengthen governance, and help build a culture of sustainable growth.",
+      details: [
+        "Performance Reviews",
+        "Governance Monitoring",
+        "Continuous Optimization",
+        "Strategic Advisory",
+        "Long-term Partnership",
+      ],
+      phaseFooter: "Phase 04 • Continuous Growth",
     },
   ];
 
@@ -86,7 +114,7 @@ export const EngagementProcessSection: React.FC = () => {
                     }`}>
                       {step.title}
                     </h3>
-                    <p className="font-caption text-caption text-on-surface-variant line-clamp-1 mt-0.5">
+                    <p className="font-caption text-caption text-on-surface-variant line-clamp-2 mt-0.5 leading-relaxed">
                       {step.desc}
                     </p>
                   </div>
@@ -122,20 +150,20 @@ export const EngagementProcessSection: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="font-headline-md text-headline-md font-bold mb-4">
+                <h3 className="font-headline-md text-headline-md font-bold mb-4 leading-snug">
                   {engagementSteps[activeStepIndex].title}
                 </h3>
                 <p className="font-body-lg text-body-lg text-on-primary-container leading-relaxed mb-6">
                   {engagementSteps[activeStepIndex].desc}
                 </p>
 
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <span className="text-caption uppercase font-bold tracking-wider text-primary-fixed block">
                     Key Deliverables:
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {engagementSteps[activeStepIndex].details.map((d, i) => (
-                      <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 rounded-lg text-caption font-medium border border-white/10">
+                      <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 rounded-lg text-caption font-medium border border-white/10">
                         <span className="material-symbols-outlined text-xs text-primary-fixed">check_circle</span>
                         {d}
                       </span>
@@ -145,7 +173,7 @@ export const EngagementProcessSection: React.FC = () => {
               </div>
 
               <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-caption text-on-primary-container font-semibold">
-                <span>Phase {engagementSteps[activeStepIndex].num} Governance</span>
+                <span>{engagementSteps[activeStepIndex].phaseFooter}</span>
                 <span>ShiftQuest Engagement Framework</span>
               </div>
             </motion.div>

@@ -169,7 +169,7 @@ export const ExecutiveCoachingPage: React.FC<ExecutiveCoachingPageProps> = ({ on
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
                     <span className="font-headline-md text-headline-md text-primary font-bold block">
-                      200+
+                      150+
                     </span>
                     <span className="font-label-md text-label-md text-on-surface font-semibold block">
                       Leaders Coached
@@ -218,11 +218,8 @@ export const ExecutiveCoachingPage: React.FC<ExecutiveCoachingPageProps> = ({ on
 
                 <div className="p-4 bg-primary text-white rounded-xl flex items-center justify-between shadow-md">
                   <div>
-                    <span className="text-caption font-bold tracking-wider text-primary-fixed block">
-                      COACHING GUARANTEE
-                    </span>
-                    <span className="font-label-md text-label-md font-bold">
-                      Personalized C-Suite Roadmap
+                    <span className="text-caption font-bold tracking-wider text-primary-fixed block uppercase">
+                      COACHING LEADERS FOR GREATER IMPACT
                     </span>
                   </div>
                   <span className="material-symbols-outlined text-2xl text-primary-fixed">psychology</span>

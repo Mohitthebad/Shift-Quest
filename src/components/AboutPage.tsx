@@ -80,9 +80,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenContact 
 
   const milestones = [
     { period: "30+ Years", title: "Executive Leadership & Board Advisory", desc: "Spearheaded HR & Industrial Relations across major manufacturing plant networks, promoter boards, and international business units." },
-    { period: "7 Plants", title: "HR Leadership Across Manufacturing Plants", desc: "Direct stewardship of large-scale industrial operations, union wage agreements, and workforce safety culture." },
+    { period: "Multiple Plants", title: "HR Leadership Across Manufacturing Plants", desc: "Direct stewardship of large-scale industrial operations, union wage agreements, and workforce safety culture." },
     { period: "M&A Focus", title: "International HR Integration", desc: "Successfully integrated cross-border teams across Thailand and South Africa during complex corporate transitions." },
-    { period: "Present", title: "Founder & Principal Advisor — ShiftQuest Consulting", desc: "Partnering with enterprise leaders, family businesses, and promoters on executive coaching, IR governance, and organizational transformation." },
+    { period: "Present", title: "Founder & Managing Partner — ShiftQuest Consulting", desc: "Partnering with enterprise leaders, family businesses, and promoters on executive coaching, IR governance, and organizational transformation." },
   ];
 
   return (
@@ -110,7 +110,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenContact 
             </ScrollRevealItem>
             <ScrollRevealItem>
               <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                Led by Dr. Krishan Singh, ShiftQuest combines over three decades of executive leadership experience with internationally accredited coaching and deep expertise in industrial relations, organizational transformation, and strategic HR advisory.
+                Led by Founder &amp; Managing Partner Dr. Krishan Singh, ShiftQuest combines over three decades of executive leadership experience with internationally accredited coaching and deep expertise in industrial relations, organizational transformation, and strategic HR advisory.
               </p>
             </ScrollRevealItem>
           </ScrollReveal>

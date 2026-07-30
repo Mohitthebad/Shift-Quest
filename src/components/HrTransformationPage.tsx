@@ -61,14 +61,30 @@ export const HrTransformationPage: React.FC<HrTransformationPageProps> = ({ onNa
       impact: "Board Governance",
       deliverable: "Board Briefings & Promoter Alignment Audits",
     },
+    {
+      num: "07",
+      title: "HR System & Process Architecture",
+      desc: "Standardizing HR operations, performance management systems, workforce SOPs, and digital workflow frameworks.",
+      icon: "settings_suggest",
+      impact: "Operational Excellence",
+      deliverable: "HR SOP Manuals & Performance Workflow Systems",
+    },
+    {
+      num: "08",
+      title: "Comprehensive HR Audits",
+      desc: "In-depth evaluations of statutory compliance, HR policy alignment, labor risk governance, and operational readiness.",
+      icon: "fact_check",
+      impact: "Zero Non-Compliance Risk",
+      deliverable: "HR Audit Scorecards & Compliance Remediation Plans",
+    },
   ];
 
   const roadmapPhases = [
     {
       phase: "PHASE 01",
-      title: "Diagnostic & HR Capability Audit",
-      desc: "Comprehensive assessment of workforce dynamics, organizational design, talent readiness, and labor compliance risk.",
-      deliverables: ["Workforce Health Audit", "Span of Control Map", "Compliance Gap Analysis"],
+      title: "Discovery & HR Diagnostic",
+      desc: "Comprehensive evaluation of existing workforce dynamics, statutory compliance risks, leadership capability gaps, and organizational bottlenecks.",
+      deliverables: ["Legal & Statutory HR Audit", "Workforce Risk Assessment", "Leadership Alignment Gaps"],
     },
     {
       phase: "PHASE 02",
@@ -121,7 +137,7 @@ export const HrTransformationPage: React.FC<HrTransformationPageProps> = ({ onNa
               </ScrollRevealItem>
               <ScrollRevealItem>
                 <p className="font-body-md text-body-md text-on-surface-variant/90 max-w-xl leading-relaxed">
-                  Led by Dr. Krishan Singh, ShiftQuest combines over 30 years of HR executive stewardship across 7 major manufacturing plants, cross-border M&amp;A integrations (Thailand, South Africa), and board governance advisory.
+                  Led by Founder &amp; Managing Partner Dr. Krishan Singh, ShiftQuest combines over 30 years of HR executive stewardship across multiple manufacturing plants, cross-border HR integrations (Thailand, South Africa), and board governance advisory.
                 </p>
               </ScrollRevealItem>
               <ScrollRevealItem>
@@ -175,7 +191,7 @@ export const HrTransformationPage: React.FC<HrTransformationPageProps> = ({ onNa
                   </div>
                   <div>
                     <span className="font-headline-sm text-headline-sm font-bold text-primary block leading-none">
-                      7 Plants
+                      Multiple Plants
                     </span>
                     <span className="font-caption text-caption text-on-surface-variant font-semibold">
                       Manufacturing Stewardship

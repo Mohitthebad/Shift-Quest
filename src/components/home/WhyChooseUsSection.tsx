@@ -13,7 +13,7 @@ export const WhyChooseUsSection: React.FC = () => {
       icon: "award",
     },
     {
-      num: "200+",
+      num: "150+",
       title: "Leaders Coached",
       desc: "ICF ACC accredited executive coaching journeys.",
       icon: "psychology",
@@ -31,7 +31,7 @@ export const WhyChooseUsSection: React.FC = () => {
       icon: "gavel",
     },
     {
-      num: "7 Plants",
+      num: "Multiple Plants",
       title: "Manufacturing Leadership",
       desc: "Direct HR stewardship across major plant networks.",
       icon: "factory",

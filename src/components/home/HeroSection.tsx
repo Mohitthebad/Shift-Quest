@@ -44,7 +44,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onScrollTo
           </ScrollRevealItem>
           <ScrollRevealItem>
             <p className="text-on-surface-variant/80 font-body-md text-body-md max-w-xl leading-relaxed">
-              Led by Dr. Krishan Singh, ShiftQuest combines over three decades of executive leadership experience with internationally accredited coaching and deep expertise in industrial relations, organizational transformation, and strategic HR advisory.
+              Led by Founder &amp; Managing Partner Dr. Krishan Singh, ShiftQuest combines over three decades of executive leadership experience with internationally accredited coaching and deep expertise in industrial relations, organizational transformation, and strategic HR advisory.
             </p>
           </ScrollRevealItem>
 
@@ -56,7 +56,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onScrollTo
                 <div className="font-caption text-caption text-sage font-semibold">Executive Leadership</div>
               </div>
               <div>
-                <div className="font-headline-md text-headline-md text-primary font-bold">200+</div>
+                <div className="font-headline-md text-headline-md text-primary font-bold">150+</div>
                 <div className="font-caption text-caption text-sage font-semibold">Leaders Coached</div>
               </div>
               <div>
