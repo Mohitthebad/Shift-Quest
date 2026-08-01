@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ScrollReveal, ScrollRevealItem, AnimatedCard } from "./animations/MotionWrappers";
+import { navigateTo } from "../lib/nav";
 
 interface IndustrialRelationsPageProps {
   onNavigate?: (page: string) => void;
@@ -46,10 +47,7 @@ export const IndustrialRelationsPage: React.FC<IndustrialRelationsPageProps> = (
             <ScrollRevealItem>
               <div className="flex flex-wrap gap-stack-md pt-4">
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (onNavigate) onNavigate("about");
-                  }}
+                  onClick={(e) => navigateTo(e, onNavigate, "about")}
                   className="bg-primary text-white px-8 py-4 font-label-md text-label-md hover:bg-primary/90 transition-colors shadow-md rounded-lg font-bold cursor-pointer"
                 >
                   Inquire for IR Advisory

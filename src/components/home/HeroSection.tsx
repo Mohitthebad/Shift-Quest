@@ -1,6 +1,8 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
+import { navigateTo } from "../../lib/nav";
+import { AmbientBlobs } from "../ui/AmbientBlobs";
 
 interface HeroSectionProps {
   onNavigate?: (page: string) => void;
@@ -11,18 +13,10 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onScrollToCTA, onOpenContact }) => {
   const shouldReduceMotion = useReducedMotion();
 
-  const handleNav = (e: React.MouseEvent, page: string) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate(page);
-    }
-  };
-
   return (
     <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-surface py-section-gap">
       {/* Ambient Luxury Lighting Blobs */}
-      <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-[400px] h-[400px] bg-sage/15 rounded-full blur-[90px] pointer-events-none" />
+      <AmbientBlobs />
 
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter items-center relative z-10">
         <ScrollReveal className="md:col-span-7 space-y-stack-md">
@@ -69,13 +63,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onScrollTo
           <ScrollRevealItem>
             <div className="flex flex-col sm:flex-row gap-stack-md pt-2">
               <button
-                onClick={onOpenContact || onScrollToCTA || ((e) => handleNav(e, "about"))}
+                onClick={onOpenContact || onScrollToCTA || ((e) => navigateTo(e, onNavigate, "about"))}
                 className="bg-primary text-white font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-primary/90 shadow-md active:scale-[0.98] transition-all font-bold cursor-pointer"
               >
                 Schedule a Conversation
               </button>
               <button
-                onClick={(e) => handleNav(e, "hr-transformation")}
+                onClick={(e) => navigateTo(e, onNavigate, "hr-transformation")}
                 className="border border-primary text-primary font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-surface-container-low transition-all font-bold"
               >
                 Explore Our Advisory Practice

@@ -1,4 +1,5 @@
 import React from "react";
+import { navigateTo } from "../lib/nav";
 
 interface FooterProps {
   onNavigate?: (page: string) => void;
@@ -6,20 +7,13 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToCTA }) => {
-  const handleNav = (e: React.MouseEvent, page: string) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate(page);
-    }
-  };
-
   return (
     <footer className="bg-[#F0EBE3] text-on-surface font-caption text-caption w-full flex flex-col items-center gap-stack-md px-margin-mobile py-stack-lg border-t border-outline-variant/40 relative">
       <div className="max-w-container-max w-full grid grid-cols-1 md:grid-cols-3 gap-stack-lg items-start border-b border-outline-variant/40 pb-stack-lg">
         <div className="space-y-4">
           <div
             className="flex items-center cursor-pointer group"
-            onClick={(e) => handleNav(e, "home")}
+            onClick={(e) => navigateTo(e, onNavigate, "home")}
           >
             <img
               alt="ShiftQuest logo"
@@ -37,21 +31,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToCTA }) => 
             <a
               className="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
               href="#"
-              onClick={(e) => handleNav(e, "coaching")}
+              onClick={(e) => navigateTo(e, onNavigate, "coaching")}
             >
               Executive Coaching
             </a>
             <a
               className="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
               href="#"
-              onClick={(e) => handleNav(e, "industrial-relations")}
+              onClick={(e) => navigateTo(e, onNavigate, "industrial-relations")}
             >
               Industrial Relations
             </a>
             <a
               className="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
               href="#"
-              onClick={(e) => handleNav(e, "hr-transformation")}
+              onClick={(e) => navigateTo(e, onNavigate, "hr-transformation")}
             >
               HR Strategy
             </a>
@@ -61,14 +55,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToCTA }) => 
             <a
               className="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
               href="#"
-              onClick={(e) => handleNav(e, "about")}
+              onClick={(e) => navigateTo(e, onNavigate, "about")}
             >
               About Us
             </a>
             <a
               className="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
               href="#"
-              onClick={onScrollToCTA || ((e) => handleNav(e, "about"))}
+              onClick={onScrollToCTA || ((e) => navigateTo(e, onNavigate, "about"))}
             >
               Contact Us
             </a>

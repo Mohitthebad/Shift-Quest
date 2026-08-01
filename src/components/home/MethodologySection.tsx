@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
+import { SectionHeader } from "../ui/SectionHeader";
 
 export const MethodologySection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
@@ -95,23 +96,12 @@ export const MethodologySection: React.FC = () => {
       className="bg-primary text-on-primary py-section-gap border-y border-outline-variant/20 relative overflow-hidden"
     >
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
-        <ScrollReveal>
-          <ScrollRevealItem>
-            <span className="text-primary-fixed uppercase tracking-widest font-label-md text-label-md block mb-2 font-semibold">
-              OUR SIGNATURE METHODOLOGY
-            </span>
-          </ScrollRevealItem>
-          <ScrollRevealItem>
-            <h2 className="font-headline-md text-headline-md text-white mb-stack-md">
-              The ShiftQuest Transformation Architecture™
-            </h2>
-          </ScrollRevealItem>
-          <ScrollRevealItem>
-            <p className="text-on-primary-container max-w-2xl mx-auto mb-12 font-body-lg text-body-lg">
-              A structured transformation framework moving organizations from reactive HR management to a compliant, high-performance culture.
-            </p>
-          </ScrollRevealItem>
-        </ScrollReveal>
+        <SectionHeader
+          eyebrow="OUR SIGNATURE METHODOLOGY"
+          title="The ShiftQuest Transformation Architecture™"
+          subtitle="A structured transformation framework moving organizations from reactive HR management to a compliant, high-performance culture."
+          className="mb-12"
+        />
 
         {/* Connected Horizontal Stepper Pipeline */}
         <div className="relative mt-4 hidden md:block">

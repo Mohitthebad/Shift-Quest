@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
+import { navigateTo } from "../../lib/nav";
 
 interface CtaSectionProps {
   onNavigate?: (page: string) => void;
@@ -7,13 +8,6 @@ interface CtaSectionProps {
 }
 
 export const CtaSection: React.FC<CtaSectionProps> = ({ onNavigate, onOpenContact }) => {
-  const handleNav = (e: React.MouseEvent, page: string) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate(page);
-    }
-  };
-
   return (
     <>
       {/* Leadership Philosophy Section */}
@@ -63,14 +57,14 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onNavigate, onOpenContac
           <ScrollRevealItem>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button
-                onClick={onOpenContact || ((e) => handleNav(e, "about"))}
+                onClick={onOpenContact || ((e) => navigateTo(e, onNavigate, "about"))}
                 className="bg-white text-primary font-label-md text-label-md px-10 py-5 rounded-lg hover:bg-surface transition-all flex items-center justify-center gap-2 font-bold shadow-lg cursor-pointer"
               >
                 Schedule a Conversation
                 <span className="material-symbols-outlined">send</span>
               </button>
               <button
-                onClick={(e) => handleNav(e, "hr-transformation")}
+                onClick={(e) => navigateTo(e, onNavigate, "hr-transformation")}
                 className="border border-white/30 text-white font-label-md text-label-md px-10 py-5 rounded-lg hover:bg-white/10 transition-all font-bold"
               >
                 Explore Our Advisory Practice

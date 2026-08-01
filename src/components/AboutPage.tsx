@@ -5,6 +5,7 @@ import { Footer } from "./Footer";
 import { ScrollReveal, ScrollRevealItem, AnimatedCard } from "./animations/MotionWrappers";
 import { TiltCard, FullscreenCredentialModal } from "./animations/TiltCard";
 import type { CredentialItem } from "./animations/TiltCard";
+import { SectionHeader } from "./ui/SectionHeader";
 
 interface AboutPageProps {
   onNavigate?: (page: string) => void;
@@ -142,23 +143,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenContact 
 
         {/* Global Certifications & Governance - Interactive 3D Tilt Grid Content Reveal */}
         <section className="px-margin-mobile md:px-margin-desktop py-section-gap bg-surface-container-low border-y border-outline-variant/20">
-          <ScrollReveal className="mb-12 text-center max-w-2xl mx-auto">
-            <ScrollRevealItem>
-              <span className="text-primary font-label-md text-label-md uppercase tracking-widest block mb-2 font-semibold">
-                ACCREDITATIONS &amp; GOVERNANCE
-              </span>
-            </ScrollRevealItem>
-            <ScrollRevealItem>
-              <h2 className="font-headline-md text-headline-md text-primary font-bold">
-                Global Standards &amp; Certifications
-              </h2>
-            </ScrollRevealItem>
-            <ScrollRevealItem>
-              <p className="font-caption text-caption text-on-surface-variant mt-2">
-                Hover to experience 3D spatial tilt • Click any credential for full specification
-              </p>
-            </ScrollRevealItem>
-          </ScrollReveal>
+          <SectionHeader
+            eyebrow="ACCREDITATIONS &amp; GOVERNANCE"
+            title="Global Standards &amp; Certifications"
+            subtitle="Hover to experience 3D spatial tilt • Click any credential for full specification"
+            className="mb-12"
+          />
 
           {/* 3D Tilt Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -176,13 +166,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenContact 
 
         {/* Key Milestones */}
         <section className="px-margin-mobile md:px-margin-desktop py-section-gap">
-          <ScrollReveal className="text-center mb-stack-lg">
-            <ScrollRevealItem>
-              <h2 className="font-headline-md text-headline-md text-primary font-bold">
-                Key Career Milestones
-              </h2>
-            </ScrollRevealItem>
-          </ScrollReveal>
+          <SectionHeader
+            eyebrow=""
+            title="Key Career Milestones"
+            className="mb-stack-lg"
+          />
           <div className="max-w-4xl mx-auto relative border-l-2 border-primary ml-4 md:ml-8">
             {milestones.map((m, idx) => (
               <AnimatedCard key={idx} className="mb-stack-lg relative pl-8 border-none bg-transparent shadow-none hover:shadow-none" liftY={-2}>

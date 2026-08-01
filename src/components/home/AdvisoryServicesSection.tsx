@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
+import { navigateTo } from "../../lib/nav";
+import { SectionHeader } from "../ui/SectionHeader";
 
 interface AdvisoryServicesSectionProps {
   onNavigate?: (page: string) => void;
@@ -48,46 +50,30 @@ export const AdvisoryServicesSection: React.FC<AdvisoryServicesSectionProps> = (
     },
   ];
 
-  const handleNav = (e: React.MouseEvent, page: string) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate(page);
-    }
-  };
-
   return (
     <section className="py-section-gap bg-surface border-t border-outline-variant/20">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-        <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-stack-md">
-          <ScrollRevealItem className="max-w-2xl">
-            <span className="text-primary font-label-md text-label-md uppercase tracking-widest block mb-2 font-semibold">
-              OUR ADVISORY PRACTICE
-            </span>
-            <h2 className="font-headline-md text-headline-md text-primary">
-              Core Capabilities &amp; Specialized Practice Areas
-            </h2>
-          </ScrollRevealItem>
-          <ScrollRevealItem>
-            <button
-              onClick={(e) => handleNav(e, "hr-transformation")}
-              className="group flex items-center gap-2 text-primary font-label-md text-label-md cursor-pointer font-bold"
-            >
-              View All Services
-              <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </button>
-          </ScrollRevealItem>
-        </ScrollReveal>
-
-        {/* Interactive Practice Selector Bar */}
+        <SectionHeader
+          eyebrow="OUR ADVISORY PRACTICE"
+          title="Core Capabilities &amp; Specialized Practice Areas"
+          center={false}
+        />
+        <button
+          onClick={(e) => navigateTo(e, onNavigate, "hr-transformation")}
+          className="group flex items-center gap-2 text-primary font-label-md text-label-md cursor-pointer font-bold mb-8"
+        >
+          View All Services
+          <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
+            arrow_forward
+          </span>
+        </button>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
           {practices.map((p, idx) => {
             const isActive = activePractice === idx;
             return (
               <button
                 key={p.id}
-                onClick={(e) => handleNav(e, p.route)}
+                onClick={(e) => navigateTo(e, onNavigate, p.route)}
                 onMouseEnter={() => setActivePractice(idx)}
                 className={`p-5 rounded-xl text-left border transition-all cursor-pointer flex items-center gap-4 ${
                   isActive
@@ -160,7 +146,7 @@ export const AdvisoryServicesSection: React.FC<AdvisoryServicesSectionProps> = (
               Explore Practice Details
             </h4>
             <button
-              onClick={(e) => handleNav(e, practices[activePractice].route)}
+              onClick={(e) => navigateTo(e, onNavigate, practices[activePractice].route)}
               className="w-full bg-primary text-white font-label-md text-label-md py-3.5 px-6 rounded-lg hover:bg-primary/90 transition-all font-bold shadow-sm"
             >
               Learn More →

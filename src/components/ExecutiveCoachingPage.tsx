@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ScrollReveal, ScrollRevealItem } from "./animations/MotionWrappers";
+import { navigateTo } from "../lib/nav";
 
 interface ExecutiveCoachingPageProps {
   onNavigate?: (page: string) => void;
@@ -129,10 +130,7 @@ export const ExecutiveCoachingPage: React.FC<ExecutiveCoachingPageProps> = ({ on
               <ScrollRevealItem>
                 <div className="flex flex-col sm:flex-row gap-stack-md pt-2">
                   <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (onNavigate) onNavigate("about");
-                    }}
+                    onClick={(e) => navigateTo(e, onNavigate, "about")}
                     className="bg-primary text-white px-8 py-4 font-label-md text-label-md rounded-lg transition-all hover:bg-primary/90 shadow-md font-bold cursor-pointer"
                   >
                     Schedule a Coaching Conversation

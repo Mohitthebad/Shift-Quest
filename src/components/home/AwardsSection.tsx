@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
+import { SectionHeader } from "../ui/SectionHeader";
 
 export const AwardsSection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
@@ -40,18 +41,11 @@ export const AwardsSection: React.FC = () => {
   return (
     <section className="py-section-gap bg-surface">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-        <ScrollReveal className="mb-stack-lg text-center max-w-2xl mx-auto">
-          <ScrollRevealItem>
-            <span className="text-primary font-label-md text-label-md uppercase tracking-widest block mb-2 font-semibold">
-              GLOBAL RECOGNITION
-            </span>
-          </ScrollRevealItem>
-          <ScrollRevealItem>
-            <h2 className="font-headline-md text-headline-md text-primary">
-              Honors &amp; Executive Awards
-            </h2>
-          </ScrollRevealItem>
-        </ScrollReveal>
+        <SectionHeader
+          eyebrow="GLOBAL RECOGNITION"
+          title="Honors &amp; Executive Awards"
+          className="mb-stack-lg"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
           {/* Award Ceremony Photo Card */}

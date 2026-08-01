@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
+import { SectionHeader } from "../ui/SectionHeader";
 
 export const EngagementProcessSection: React.FC = () => {
   const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
@@ -67,18 +68,11 @@ export const EngagementProcessSection: React.FC = () => {
   return (
     <section className="py-section-gap bg-surface">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-        <ScrollReveal className="mb-12 text-center max-w-2xl mx-auto">
-          <ScrollRevealItem>
-            <span className="text-primary font-label-md text-label-md uppercase tracking-widest block mb-2 font-semibold">
-              HOW WE ENGAGE
-            </span>
-          </ScrollRevealItem>
-          <ScrollRevealItem>
-            <h2 className="font-headline-md text-headline-md text-primary">
-              Our Structured Engagement Process
-            </h2>
-          </ScrollRevealItem>
-        </ScrollReveal>
+        <SectionHeader
+          eyebrow="HOW WE ENGAGE"
+          title="Our Structured Engagement Process"
+          className="mb-12"
+        />
 
         {/* Vertical Split Stepper Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">

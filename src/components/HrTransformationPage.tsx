@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ScrollReveal, ScrollRevealItem } from "./animations/MotionWrappers";
+import { AmbientBlobs } from "./ui/AmbientBlobs";
 
 interface HrTransformationPageProps {
   onNavigate?: (page: string) => void;
@@ -23,14 +24,6 @@ export const HrTransformationPage: React.FC<HrTransformationPageProps> = ({ onNa
     },
     {
       num: "02",
-      title: "Organizational Design & Scale",
-      desc: "Designing agile, scalable organizational structures for rapid business expansion, plant networks, and M&A integration.",
-      icon: "architecture",
-      impact: "Agile Scale & Efficiency",
-      deliverable: "Role Architecture, Span of Control & Org Charts",
-    },
-    {
-      num: "03",
       title: "Succession Planning & Talent",
       desc: "Building robust succession pipelines and talent development systems for long-term C-Suite & critical leadership continuity.",
       icon: "groups",
@@ -38,7 +31,7 @@ export const HrTransformationPage: React.FC<HrTransformationPageProps> = ({ onNa
       deliverable: "Executive Succession Bench & Competency Models",
     },
     {
-      num: "04",
+      num: "03",
       title: "Cultural & Leadership Capability",
       desc: "Fostering a high-performance executive culture grounded in psychological safety, accountability, and continuous learning.",
       icon: "auto_awesome",
@@ -46,15 +39,7 @@ export const HrTransformationPage: React.FC<HrTransformationPageProps> = ({ onNa
       deliverable: "Leadership Capability Frameworks & Mentorship",
     },
     {
-      num: "05",
-      title: "Cross-Border M&A HR Integration",
-      desc: "Seamless workforce harmonization across international business units (Thailand, South Africa, UAE & India).",
-      icon: "public",
-      impact: "Global Harmonization",
-      deliverable: "M&A Integration Playbooks & Policy Alignment",
-    },
-    {
-      num: "06",
+      num: "04",
       title: "Board Advisory & Governance",
       desc: "Board-level HR advisory, promoter alignment, executive compensation structuring, and statutory compliance audits.",
       icon: "verified",
@@ -62,7 +47,7 @@ export const HrTransformationPage: React.FC<HrTransformationPageProps> = ({ onNa
       deliverable: "Board Briefings & Promoter Alignment Audits",
     },
     {
-      num: "07",
+      num: "05",
       title: "HR System & Process Architecture",
       desc: "Standardizing HR operations, performance management systems, workforce SOPs, and digital workflow frameworks.",
       icon: "settings_suggest",
@@ -70,7 +55,7 @@ export const HrTransformationPage: React.FC<HrTransformationPageProps> = ({ onNa
       deliverable: "HR SOP Manuals & Performance Workflow Systems",
     },
     {
-      num: "08",
+      num: "06",
       title: "Comprehensive HR Audits",
       desc: "In-depth evaluations of statutory compliance, HR policy alignment, labor risk governance, and operational readiness.",
       icon: "fact_check",
@@ -114,8 +99,7 @@ export const HrTransformationPage: React.FC<HrTransformationPageProps> = ({ onNa
         {/* Executive Hero Section */}
         <section className="relative py-section-gap overflow-hidden bg-surface border-b border-outline-variant/20">
           {/* Ambient Lighting Background */}
-          <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-[400px] h-[400px] bg-sage/15 rounded-full blur-[90px] pointer-events-none" />
+          <AmbientBlobs />
 
           <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter items-center relative z-10">
             <ScrollReveal className="md:col-span-7 space-y-stack-md">

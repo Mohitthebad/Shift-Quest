@@ -11,6 +11,15 @@ body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, p, span, a, div {
   background: linear-gradient(135deg, #F7F3EC 0%, #EFEBE3 100%);
 }
 
+/* Unified square bullet — replaces .navy-bullet, .custom-bullet, .navy-square-list */
+.sq-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #3B5A6E;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 .navy-square-list li {
   position: relative;
   padding-left: 24px;
@@ -24,50 +33,6 @@ body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, p, span, a, div {
   width: 8px;
   height: 8px;
   background-color: #3B5A6E;
-}
-
-.custom-bullet {
-  width: 8px;
-  height: 8px;
-  background-color: #3B5A6E;
-  display: inline-block;
-  margin-right: 12px;
-  flex-shrink: 0;
-}
-
-.text-shadow-subtle {
-  text-shadow: 0 2px 4px rgba(34, 40, 46, 0.05);
-}
-
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
-}
-
-.navy-bullet::before {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background-color: #3B5A6E;
-  margin-right: 12px;
-  flex-shrink: 0;
-}
-
-.section-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .custom-scrollbar::-webkit-scrollbar {

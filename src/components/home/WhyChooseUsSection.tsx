@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
+import { SectionHeader } from "../ui/SectionHeader";
 
 export const WhyChooseUsSection: React.FC = () => {
   const [selectedIndustry, setSelectedIndustry] = useState<number>(0);
@@ -59,18 +60,11 @@ export const WhyChooseUsSection: React.FC = () => {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop space-y-16">
         {/* Executive Impact Section - Infinite Marquee Ticker */}
         <div>
-          <ScrollReveal className="text-center max-w-2xl mx-auto mb-10">
-            <ScrollRevealItem>
-              <span className="text-primary font-label-md text-label-md uppercase tracking-widest block mb-2 font-semibold">
-                OUR PROVEN IMPACT
-              </span>
-            </ScrollRevealItem>
-            <ScrollRevealItem>
-              <h2 className="font-headline-md text-headline-md text-primary">
-                Trusted by Experience. Proven by Outcomes.
-              </h2>
-            </ScrollRevealItem>
-          </ScrollReveal>
+          <SectionHeader
+            eyebrow="OUR PROVEN IMPACT"
+            title="Trusted by Experience. Proven by Outcomes."
+            className="mb-10"
+          />
 
           {/* Infinite Marquee Container */}
           <div className="relative overflow-hidden py-4 -mx-margin-mobile md:-mx-margin-desktop">

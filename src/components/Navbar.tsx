@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { navigateTo } from "../lib/nav";
 
 interface NavbarProps {
   activePage?: string;
@@ -23,10 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const handleNav = (e: React.MouseEvent, page: string) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate(page);
-    }
+    navigateTo(e, onNavigate, page);
     setIsDrawerOpen(false);
     setActiveMenu(null);
   };
