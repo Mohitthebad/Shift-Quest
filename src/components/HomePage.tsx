@@ -5,7 +5,6 @@ import { HeroSection } from "./home/HeroSection";
 import { MethodologySection } from "./home/MethodologySection";
 import { WhyChooseUsSection } from "./home/WhyChooseUsSection";
 import { EngagementProcessSection } from "./home/EngagementProcessSection";
-import { ProjectsPortfolioSection } from "./home/ProjectsPortfolioSection";
 import { AdvisoryServicesSection } from "./home/AdvisoryServicesSection";
 import { AwardsSection } from "./home/AwardsSection";
 import { TrustBadgesBar } from "./home/TrustBadgesBar";
@@ -52,7 +51,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
         <EngagementProcessSection />
 
         {/* 5. Operational Excellence Projects Portfolio */}
-        <ProjectsPortfolioSection />
+       
 
         {/* 6. Comprehensive Advisory Practice Areas */}
         <AdvisoryServicesSection onNavigate={onNavigate} />
