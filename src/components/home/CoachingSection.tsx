@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeader } from "../ui/SectionHeader";
 import { navigateTo } from "../../lib/nav";
@@ -12,30 +12,78 @@ export const CoachingSection: React.FC<CoachingSectionProps> = ({
   onNavigate,
   onOpenContact,
 }) => {
+  const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
+
   const steps = [
     {
       num: "01",
-      title: "Contracting & Goals",
-      desc: "Confidential chemistry call, signing NDA, and defining clear 1-on-1 executive coaching objectives with board alignment.",
       icon: "handshake",
+      title: "Establish Trust & Discovery",
+      desc: "Use 360° feedback and assessments to co-create a safe, ethical foundation for coaching, ensuring confidentiality and respect.",
+      details: [
+        "360° Feedback & Assessments",
+        "Confidentiality & NDA Framework",
+        "Safe & Ethical Foundation",
+        "Sponsor & Stakeholder Alignment",
+        "Coaching Readiness Audit",
+      ],
+      phaseFooter: "Phase 01 • Discovery & Trust",
     },
     {
       num: "02",
-      title: "360° Diagnostics",
-      desc: "Gathering multi-rater stakeholder feedback and psychometric audits to identify core leadership strengths and blind spots.",
       icon: "manage_search",
+      title: "Evoking Awareness",
+      desc: "Identify blind spots and growth edges through powerful questioning and active listening, fostering client self-discovery.",
+      details: [
+        "Blind Spot Diagnostics",
+        "Growth Edge Identification",
+        "Powerful Questioning",
+        "Active Listening Sessions",
+        "Self-Discovery Mapping",
+      ],
+      phaseFooter: "Phase 02 • Evoking Awareness",
     },
     {
       num: "03",
-      title: "1-on-1 Sessions",
-      desc: "Bi-weekly confidential coaching focused on real-time decision scenarios, executive presence, and behavioral execution.",
-      icon: "psychology",
+      icon: "track_changes",
+      title: "Co-Create Goals",
+      desc: "Partner with the client to set measurable, purposeful outcomes aligned with personal values and organizational objectives.",
+      details: [
+        "Measurable Outcome Definition",
+        "Personal Values Alignment",
+        "Organizational Objectives",
+        "Leadership KPI Framework",
+        "Strategic Action Roadmap",
+      ],
+      phaseFooter: "Phase 03 • Goal Co-Creation",
     },
     {
       num: "04",
-      title: "Impact & Growth",
-      desc: "Evaluating leadership transformation against baseline metrics, sponsor reviews, and embedding sustained executive habits.",
+      icon: "trending_up",
+      title: "Facilitate Growth & Action",
+      desc: "Support structured development with mentoring, feedback, and accountability while maintaining coaching presence.",
+      details: [
+        "Bi-Weekly 1-on-1 Sessions",
+        "Structured Development Plans",
+        "Real-Time Decision Coaching",
+        "Accountability Frameworks",
+        "Executive Presence Mentoring",
+      ],
+      phaseFooter: "Phase 04 • Growth & Action",
+    },
+    {
+      num: "05",
       icon: "verified",
+      title: "Reflect & Sustain Change",
+      desc: "Encourage iterative reflection, embed behavioral shifts, and uphold ethical responsibility for long-term transformation.",
+      details: [
+        "Iterative Reflection Reviews",
+        "Behavioral Shift Embedding",
+        "Sustained Habit Formation",
+        "Long-Term Impact Evaluation",
+        "Ethical Coaching Governance",
+      ],
+      phaseFooter: "Phase 05 • Sustain Transformation",
     },
   ];
 
@@ -48,44 +96,104 @@ export const CoachingSection: React.FC<CoachingSectionProps> = ({
           className="mb-12"
         />
 
-        {/* Clean 4-Step Horizontal Process Pipeline */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-          {steps.map((step, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.2 }}
-              className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between relative group hover:border-primary/50 hover:shadow-lg hover:bg-white transition-all duration-300 cursor-pointer min-h-[200px]"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <span className="material-symbols-outlined text-2xl">{step.icon}</span>
+        {/* Vertical Split Stepper Layout matching HR System Advisory design */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+          {/* Left Column: Interactive Timeline List */}
+          <div className="md:col-span-6 space-y-3">
+            {steps.map((step, idx) => {
+              const isActive = activeStepIndex === idx;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setActiveStepIndex(idx)}
+                  onMouseEnter={() => setActiveStepIndex(idx)}
+                  className={`w-full text-left p-4 rounded-xl transition-all relative flex items-start gap-4 cursor-pointer focus:outline-none ${
+                    isActive
+                      ? "bg-surface-container-low border border-primary/30 shadow-md translate-x-2"
+                      : "hover:bg-surface-container-low/50 border border-transparent"
+                  }`}
+                >
+                  {/* Timeline Node Badge */}
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shrink-0 z-10 transition-colors ${
+                      isActive
+                        ? "bg-primary text-white shadow-md ring-4 ring-primary/10"
+                        : "bg-surface-container-high text-on-surface-variant"
+                    }`}
+                  >
+                    {step.num}
                   </div>
-                  <span className="font-mono font-bold text-caption px-3 py-1 bg-surface-container-high rounded-full text-on-surface-variant">
-                    STEP {step.num}
-                  </span>
-                </div>
 
-                <h3 className="font-headline-sm text-headline-sm text-primary font-bold">
-                  {step.title}
-                </h3>
-
-                {/* Content revealed on card hover */}
-                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-300 ease-in-out">
-                  <div className="overflow-hidden">
-                    <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed pt-3 border-t border-outline-variant/15 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex-grow pt-1">
+                    <h3 className={`font-headline-sm text-headline-sm font-bold transition-colors ${
+                      isActive ? "text-primary" : "text-on-surface"
+                    }`}>
+                      {step.title}
+                    </h3>
+                    <p className="font-caption text-caption text-on-surface-variant line-clamp-2 mt-0.5 leading-relaxed">
                       {step.desc}
                     </p>
                   </div>
+
+                  <span className={`material-symbols-outlined self-center transition-transform ${
+                    isActive ? "text-primary rotate-90" : "text-on-surface-variant/40"
+                  }`}>
+                    chevron_right
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right Column: Detailed Active Step Showcase */}
+          <div className="md:col-span-6 flex flex-col">
+            <motion.div
+              key={activeStepIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="bg-primary text-white p-8 rounded-2xl shadow-xl flex flex-col justify-between flex-grow border border-white/10"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-3xl text-white">
+                      {steps[activeStepIndex].icon}
+                    </span>
+                  </div>
+                  <span className="text-caption font-bold uppercase tracking-widest text-primary-fixed bg-white/10 px-3 py-1 rounded-full">
+                    Step {steps[activeStepIndex].num} of 05
+                  </span>
+                </div>
+
+                <h3 className="font-headline-md text-headline-md font-bold mb-4 leading-snug">
+                  {steps[activeStepIndex].title}
+                </h3>
+                <p className="font-body-lg text-body-lg text-on-primary-container leading-relaxed mb-6">
+                  {steps[activeStepIndex].desc}
+                </p>
+
+                <div className="space-y-3">
+                  <span className="text-caption uppercase font-bold tracking-wider text-primary-fixed block">
+                    Key Deliverables:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {steps[activeStepIndex].details.map((d, i) => (
+                      <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 rounded-lg text-caption font-medium border border-white/10">
+                        <span className="material-symbols-outlined text-xs text-primary-fixed">check_circle</span>
+                        {d}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between text-caption font-semibold text-sage">
-                <span>Phase 0{idx + 1}</span>
+              <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-caption text-on-primary-container font-semibold">
+                <span>{steps[activeStepIndex].phaseFooter}</span>
+                <span>ShiftQuest Executive Coaching Framework</span>
               </div>
             </motion.div>
-          ))}
+          </div>
         </div>
 
         {/* Bottom Callout & Action */}
