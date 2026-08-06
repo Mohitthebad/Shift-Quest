@@ -7,9 +7,10 @@ import { navigateTo } from "../lib/nav";
 
 interface ExecutiveCoachingPageProps {
   onNavigate?: (page: string) => void;
+  onOpenContact?: () => void;
 }
 
-export const ExecutiveCoachingPage: React.FC<ExecutiveCoachingPageProps> = ({ onNavigate }) => {
+export const ExecutiveCoachingPage: React.FC<ExecutiveCoachingPageProps> = ({ onNavigate, onOpenContact }) => {
   const shouldReduceMotion = useReducedMotion();
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
 
@@ -100,7 +101,7 @@ export const ExecutiveCoachingPage: React.FC<ExecutiveCoachingPageProps> = ({ on
 
   return (
     <div className="bg-background text-on-surface font-body-md min-h-screen flex flex-col justify-between">
-      <Navbar activePage="coaching" onNavigate={onNavigate} />
+      <Navbar activePage="coaching" onNavigate={onNavigate} onOpenContact={onOpenContact} />
 
       <main className="flex-grow pt-16 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         {/* Hero Section */}

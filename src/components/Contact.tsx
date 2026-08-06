@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { supabase, isSupabaseConfigured } from "../lib/supabase";
 
 interface ContactProps {
   isOpen: boolean;
@@ -14,10 +15,12 @@ export const Contact: React.FC<ContactProps> = ({ isOpen, onClose }) => {
     company: "",
     title: "",
     practice: "Executive Coaching",
+    customPractice: "",
     preferredTime: "Morning (9 AM - 12 PM)",
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const handleChange = (
@@ -27,8 +30,37 @@ export const Contact: React.FC<ContactProps> = ({ isOpen, onClose }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
+    const practiceSubmitted =
+      formData.practice === "Custom" && formData.customPractice
+        ? `Custom: ${formData.customPractice}`
+        : formData.practice;
+
+    if (isSupabaseConfigured()) {
+      try {
+        const { error } = await supabase.from("inquiries").insert([
+          {
+            full_name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            company: formData.company,
+            title: formData.title,
+            practice: practiceSubmitted,
+            message: formData.message,
+          },
+        ]);
+        if (error) {
+          console.error("Supabase insert error:", error);
+        }
+      } catch (err) {
+        console.error("Supabase submission exception:", err);
+      }
+    }
+
+    setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
@@ -41,16 +73,28 @@ export const Contact: React.FC<ContactProps> = ({ isOpen, onClose }) => {
       company: "",
       title: "",
       practice: "Executive Coaching",
+      customPractice: "",
       preferredTime: "Morning (9 AM - 12 PM)",
       message: "",
     });
     onClose();
   };
 
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[200] overflow-y-auto">
           {/* Dark Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -60,14 +104,16 @@ export const Contact: React.FC<ContactProps> = ({ isOpen, onClose }) => {
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
           />
 
-          {/* Modal Container */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="relative w-full max-w-2xl bg-surface text-on-surface rounded-2xl shadow-2xl border border-outline-variant/30 overflow-hidden z-10 my-8"
-          >
+          {/* Centered Scroll Container Wrapper */}
+          <div className="flex min-h-full items-center justify-center p-4 sm:p-6 text-center">
+            {/* Modal Container */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="relative w-full max-w-2xl bg-surface text-on-surface rounded-2xl shadow-2xl border border-outline-variant/30 overflow-hidden z-10 text-left my-auto"
+            >
             {/* Modal Header */}
             <div className="bg-primary text-white p-6 md:p-8 relative">
               <button
@@ -192,7 +238,7 @@ export const Contact: React.FC<ContactProps> = ({ isOpen, onClose }) => {
                         <option value="HR & Organization Transformation">HR &amp; Organization Transformation</option>
                         <option value="Board Governance Advisory">Board Governance Advisory</option>
                         <option value="General Leadership Briefing">General Leadership Briefing</option>
-                        <option value="Other">Other</option>
+                        <option value="Custom">Custom</option>
                       </select>
                     </div>
 
@@ -212,6 +258,23 @@ export const Contact: React.FC<ContactProps> = ({ isOpen, onClose }) => {
                       </select>
                     </div>
                   </div>
+
+                  {formData.practice === "Custom" && (
+                    <div>
+                      <label className="block text-caption font-bold uppercase tracking-wider text-primary mb-1">
+                        Custom  Area Details *
+                      </label>
+                      <textarea
+                        name="customPractice"
+                        rows={2}
+                        required={formData.practice === "Custom"}
+                        value={formData.customPractice}
+                        onChange={handleChange}
+                        placeholder="Please describe your custom practice area or specific advisory requirement..."
+                        className="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-lg text-body-md focus:outline-none focus:border-primary transition-all resize-none"
+                      />
+                    </div>
+                  )}
 
                   <div>
                     <label className="block text-caption font-bold uppercase tracking-wider text-primary mb-1">
@@ -234,9 +297,10 @@ export const Contact: React.FC<ContactProps> = ({ isOpen, onClose }) => {
                     </span>
                     <button
                       type="submit"
-                      className="w-full sm:w-auto bg-primary text-white font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-primary/90 transition-all font-bold shadow-md cursor-pointer flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                      className="w-full sm:w-auto bg-primary text-white font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-primary/90 transition-all font-bold shadow-md cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
                     >
-                      Schedule Consultation
+                      {isSubmitting ? "Submitting..." : "Schedule Consultation"}
                       <span className="material-symbols-outlined">arrow_forward</span>
                     </button>
                   </div>
@@ -245,8 +309,9 @@ export const Contact: React.FC<ContactProps> = ({ isOpen, onClose }) => {
             </div>
           </motion.div>
         </div>
-      )}
-    </AnimatePresence>
+      </div>
+    )}
+  </AnimatePresence>
   );
 };
 

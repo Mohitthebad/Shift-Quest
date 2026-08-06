@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
 import { SectionHeader } from "../ui/SectionHeader";
 
 export const MethodologySection: React.FC = () => {
@@ -97,8 +96,9 @@ export const MethodologySection: React.FC = () => {
     >
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
         <SectionHeader
+          dark
           eyebrow="OUR SIGNATURE METHODOLOGY"
-          title="The ShiftQuest Transformation Architecture™"
+          title="Our Methodology — IR Diagnostic"
           subtitle="A structured transformation framework moving organizations from reactive HR management to a compliant, high-performance culture."
           className="mb-12"
         />

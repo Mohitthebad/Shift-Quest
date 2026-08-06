@@ -29,6 +29,19 @@ export const Navbar: React.FC<NavbarProps> = ({
     setActiveMenu(null);
   };
 
+  const handleScheduleClick = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    setActiveMenu(null);
+    setIsDrawerOpen(false);
+    if (onOpenContact) {
+      onOpenContact();
+    } else if (onNavigate) {
+      onNavigate("contact");
+    } else if (onScrollToCTA) {
+      onScrollToCTA(e as any);
+    }
+  };
+
   // Scroll listener for sticky header background
   useEffect(() => {
     const handleScroll = () => {
@@ -226,10 +239,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </div>
 
                       <button
-                        onClick={() => {
-                          setActiveMenu(null);
-                          if (onOpenContact) onOpenContact();
-                        }}
+                        onClick={handleScheduleClick}
                         className="w-full bg-primary text-white font-label-md text-label-md py-2.5 px-4 rounded-lg hover:bg-primary-container transition-all font-bold cursor-pointer text-center shadow-sm"
                       >
                         Schedule Session →
@@ -339,12 +349,25 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             )}
           </div>
+
+          {/* Contact Link */}
+          <a
+            className={`font-label-md text-label-md transition-colors px-3.5 py-2 rounded-lg cursor-pointer ${
+              activePage === "contact"
+                ? "text-primary font-bold bg-surface-container-low/60"
+                : "text-on-surface-variant hover:text-primary hover:bg-surface-container-low"
+            }`}
+            href="#"
+            onClick={(e) => handleNav(e, "contact")}
+          >
+            Contact
+          </a>
         </nav>
 
         {/* Action Button & Mobile Menu Toggle */}
         <div className="flex items-center gap-3">
           <button
-            onClick={onOpenContact || onScrollToCTA || ((e) => handleNav(e, "about"))}
+            onClick={handleScheduleClick}
             className="bg-primary text-white font-label-md text-label-md px-6 py-2.5 rounded-lg active:scale-95 transition-all hover:bg-primary-container shadow-sm font-bold cursor-pointer"
           >
             Schedule
@@ -419,6 +442,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="material-symbols-outlined">person</span> About Dr. Krishan Singh
           </a>
 
+          <a
+            className={`rounded-xl flex items-center gap-3 px-4 py-3 font-label-md text-label-md transition-colors ${
+              activePage === "contact"
+                ? "bg-primary text-white font-bold"
+                : "text-on-surface-variant hover:bg-surface-container-low"
+            }`}
+            href="#"
+            onClick={(e) => handleNav(e, "contact")}
+          >
+            <span className="material-symbols-outlined">mail</span> Contact Us
+          </a>
+
           {/* Advisory Practices Group in Mobile */}
           <div className="mt-3 pt-3 border-t border-outline-variant/20">
             <span className="text-caption font-bold text-sage uppercase tracking-widest block px-4 mb-2">
@@ -464,10 +499,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         <div className="mt-auto pt-6">
           <button
-            onClick={() => {
-              setIsDrawerOpen(false);
-              if (onOpenContact) onOpenContact();
-            }}
+            onClick={handleScheduleClick}
             className="w-full bg-primary text-white font-label-md text-label-md py-3 px-4 rounded-xl font-bold text-center shadow-md cursor-pointer"
           >
             Schedule Advisory Session

@@ -112,10 +112,21 @@ interface FullscreenModalProps {
 }
 
 export const FullscreenCredentialModal: React.FC<FullscreenModalProps> = ({ selectedItem, onClose }) => {
+  React.useEffect(() => {
+    if (selectedItem) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedItem]);
+
   return (
     <AnimatePresence>
       {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[200] overflow-y-auto">
           {/* Backdrop Blur */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -125,79 +136,82 @@ export const FullscreenCredentialModal: React.FC<FullscreenModalProps> = ({ sele
             className="fixed inset-0 bg-black/70 backdrop-blur-md"
           />
 
-          {/* Modal Card Reveal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 30 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-white/60 overflow-hidden z-10 my-8"
-          >
-            {/* Modal Header Bar */}
-            <div className="bg-primary text-white p-6 md:p-8 relative">
-              <button
-                onClick={onClose}
-                className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all flex items-center justify-center cursor-pointer"
-                aria-label="Close modal"
-              >
-                <span className="material-symbols-outlined text-xl">close</span>
-              </button>
+          {/* Centered Scroll Container Wrapper */}
+          <div className="flex min-h-full items-center justify-center p-4 sm:p-6 text-center">
+            {/* Modal Card Reveal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 30 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-white/60 overflow-hidden z-10 text-left my-auto"
+            >
+              {/* Modal Header Bar */}
+              <div className="bg-primary text-white p-6 md:p-8 relative">
+                <button
+                  onClick={onClose}
+                  className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all flex items-center justify-center cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <span className="material-symbols-outlined text-xl">close</span>
+                </button>
 
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/15 rounded-full text-caption font-semibold text-primary-fixed uppercase tracking-wider mb-3">
-                <span className="material-symbols-outlined text-sm">{selectedItem.icon}</span>
-                {selectedItem.label}
-              </div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/15 rounded-full text-caption font-semibold text-primary-fixed uppercase tracking-wider mb-3">
+                  <span className="material-symbols-outlined text-sm">{selectedItem.icon}</span>
+                  {selectedItem.label}
+                </div>
 
-              <h2 className="font-headline-md text-headline-md font-bold text-white mb-2">
-                {selectedItem.title}
-              </h2>
-              <p className="text-primary-fixed font-body-md text-body-md font-medium">
-                {selectedItem.institution}
-              </p>
-            </div>
-
-            {/* Modal Content Details */}
-            <div className="p-6 md:p-8 space-y-6">
-              <div>
-                <span className="text-caption font-bold text-sage uppercase tracking-wider block mb-2">
-                  CREDENTIAL OVERVIEW
-                </span>
-                <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-                  {selectedItem.fullDescription}
+                <h2 className="font-headline-md text-headline-md font-bold text-white mb-2">
+                  {selectedItem.title}
+                </h2>
+                <p className="text-primary-fixed font-body-md text-body-md font-medium">
+                  {selectedItem.institution}
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-outline-variant/20">
-                <div className="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
-                  <span className="text-caption font-bold text-primary uppercase tracking-wider block mb-1">
-                    ISSUING / GOVERNING BODY
+              {/* Modal Content Details */}
+              <div className="p-6 md:p-8 space-y-6">
+                <div>
+                  <span className="text-caption font-bold text-sage uppercase tracking-wider block mb-2">
+                    CREDENTIAL OVERVIEW
                   </span>
-                  <span className="font-label-md text-label-md font-bold text-on-surface">
-                    {selectedItem.institution}
-                  </span>
+                  <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    {selectedItem.fullDescription}
+                  </p>
                 </div>
 
-                <div className="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
-                  <span className="text-caption font-bold text-primary uppercase tracking-wider block mb-1">
-                    STANDARDS VERIFICATION
-                  </span>
-                  <span className="font-label-md text-label-md font-bold text-on-surface flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-sage text-lg">verified</span>
-                    {selectedItem.verificationBadge}
-                  </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-outline-variant/20">
+                  <div className="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
+                    <span className="text-caption font-bold text-primary uppercase tracking-wider block mb-1">
+                      ISSUING / GOVERNING BODY
+                    </span>
+                    <span className="font-label-md text-label-md font-bold text-on-surface">
+                      {selectedItem.institution}
+                    </span>
+                  </div>
+
+                  <div className="p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
+                    <span className="text-caption font-bold text-primary uppercase tracking-wider block mb-1">
+                      STANDARDS VERIFICATION
+                    </span>
+                    <span className="font-label-md text-label-md font-bold text-on-surface flex items-center gap-1.5">
+                      <span className="material-symbols-outlined text-sage text-lg">verified</span>
+                      {selectedItem.verificationBadge}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="pt-4 flex justify-end">
+                  <button
+                    onClick={onClose}
+                    className="bg-primary text-white font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-primary/90 transition-all font-bold cursor-pointer"
+                  >
+                    Close Specification
+                  </button>
                 </div>
               </div>
-
-              <div className="pt-4 flex justify-end">
-                <button
-                  onClick={onClose}
-                  className="bg-primary text-white font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-primary/90 transition-all font-bold cursor-pointer"
-                >
-                  Close Specification
-                </button>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       )}
     </AnimatePresence>

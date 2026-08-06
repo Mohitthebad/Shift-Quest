@@ -8,6 +8,8 @@ interface SectionHeaderProps {
   /** Centers text (default true) */
   center?: boolean;
   className?: string;
+  /** Uses white/sage text for dark backgrounds (default false) */
+  dark?: boolean;
 }
 
 /**
@@ -20,22 +22,35 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   subtitle,
   center = true,
   className = "",
+  dark = false,
 }) => {
   return (
     <ScrollReveal className={`${center ? "text-center max-w-2xl mx-auto" : "max-w-2xl"} ${className}`}>
       <ScrollRevealItem>
-        <span className="text-primary font-label-md text-label-md uppercase tracking-widest block mb-2 font-semibold">
+        <span
+          className={`${
+            dark ? "text-sage font-bold" : "text-primary font-semibold"
+          } font-label-md text-label-md uppercase tracking-widest block mb-2`}
+        >
           {eyebrow}
         </span>
       </ScrollRevealItem>
       <ScrollRevealItem>
-        <h2 className="font-headline-md text-headline-md text-primary">
+        <h2
+          className={`font-headline-md text-headline-md font-bold ${
+            dark ? "text-white" : "text-primary"
+          }`}
+        >
           {title}
         </h2>
       </ScrollRevealItem>
       {subtitle && (
         <ScrollRevealItem>
-          <p className="font-body-md text-body-md text-on-surface-variant mt-3 leading-relaxed">
+          <p
+            className={`font-body-md text-body-md mt-3 leading-relaxed ${
+              dark ? "text-white/80" : "text-on-surface-variant"
+            }`}
+          >
             {subtitle}
           </p>
         </ScrollRevealItem>

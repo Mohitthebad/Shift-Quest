@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
 import { navigateTo } from "../../lib/nav";
 import { SectionHeader } from "../ui/SectionHeader";
 

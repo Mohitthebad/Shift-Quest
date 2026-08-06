@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
 import { SectionHeader } from "../ui/SectionHeader";
 
 export const EngagementProcessSection: React.FC = () => {
@@ -70,7 +69,7 @@ export const EngagementProcessSection: React.FC = () => {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <SectionHeader
           eyebrow="HOW WE ENGAGE"
-          title="Our Structured Engagement Process"
+          title="Our HR System Advisory"
           className="mb-12"
         />
 

@@ -6,9 +6,10 @@ import { navigateTo } from "../lib/nav";
 
 interface IndustrialRelationsPageProps {
   onNavigate?: (page: string) => void;
+  onOpenContact?: () => void;
 }
 
-export const IndustrialRelationsPage: React.FC<IndustrialRelationsPageProps> = ({ onNavigate }) => {
+export const IndustrialRelationsPage: React.FC<IndustrialRelationsPageProps> = ({ onNavigate, onOpenContact }) => {
   const capabilities = [
     { title: "Long-Term Wage Settlements", text: "Negotiating & facilitating 48+ long-term industrial wage agreements with zero strike history.", icon: "handshake" },
     { title: "Dispute Mitigation & Prevention", text: "Proactive employee relations frameworks preventing industrial conflict and operational downtime.", icon: "shield" },
@@ -18,7 +19,7 @@ export const IndustrialRelationsPage: React.FC<IndustrialRelationsPageProps> = (
 
   return (
     <div className="bg-background text-on-surface font-body-md min-h-screen flex flex-col justify-between">
-      <Navbar activePage="industrial-relations" onNavigate={onNavigate} />
+      <Navbar activePage="industrial-relations" onNavigate={onNavigate} onOpenContact={onOpenContact} />
 
       <main className="pt-16 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         {/* Hero Section */}

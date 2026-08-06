@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ScrollReveal, ScrollRevealItem } from "../animations/MotionWrappers";
 import { SectionHeader } from "../ui/SectionHeader";
 
 export const AwardsSection: React.FC = () => {

@@ -6,7 +6,7 @@ interface FooterProps {
   onScrollToCTA?: (e: React.MouseEvent) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToCTA }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-[#F0EBE3] text-on-surface font-caption text-caption w-full flex flex-col items-center gap-stack-md px-margin-mobile py-stack-lg border-t border-outline-variant/40 relative">
       <div className="max-w-container-max w-full grid grid-cols-1 md:grid-cols-3 gap-stack-lg items-start border-b border-outline-variant/40 pb-stack-lg">
@@ -62,15 +62,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onScrollToCTA }) => 
             <a
               className="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
               href="#"
-              onClick={onScrollToCTA || ((e) => navigateTo(e, onNavigate, "about"))}
+              onClick={(e) => navigateTo(e, onNavigate, "contact")}
             >
               Contact Us
             </a>
           </div>
         </div>
-        <div className="space-y-4 text-right md:text-left">
+        <div className="space-y-2 text-right md:text-left">
           <h5 className="text-primary font-bold">Executive Consultation</h5>
-          <p className="text-on-surface-variant">enquiry@shiftquest.com</p>
+          <a href="mailto:krishan@shiftquest.com" className="text-on-surface-variant hover:text-primary transition-colors block">
+            krishan@shiftquest.com
+          </a>
+          <a href="tel:+919650106003" className="text-on-surface-variant hover:text-primary transition-colors block">
+            +91 9650106003
+          </a>
         </div>
       </div>
       <div className="w-full flex flex-col md:flex-row justify-between items-center pt-stack-md text-on-surface-variant max-w-container-max gap-4">

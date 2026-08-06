@@ -5,10 +5,12 @@ import { HeroSection } from "./home/HeroSection";
 import { MethodologySection } from "./home/MethodologySection";
 import { WhyChooseUsSection } from "./home/WhyChooseUsSection";
 import { EngagementProcessSection } from "./home/EngagementProcessSection";
+import { CoachingSection } from "./home/CoachingSection";
 import { AdvisoryServicesSection } from "./home/AdvisoryServicesSection";
 import { AwardsSection } from "./home/AwardsSection";
 import { TrustBadgesBar } from "./home/TrustBadgesBar";
 import { CtaSection } from "./home/CtaSection";
+import { GetInTouchSection } from "./GetInTouchSection";
 
 interface HomePageProps {
   onNavigate?: (page: string) => void;
@@ -41,20 +43,28 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
         {/* 1. Hero Section with Badge & Stats */}
         <HeroSection onNavigate={onNavigate} onScrollToCTA={scrollToCTA} onOpenContact={onOpenContact} />
 
+       
+        {/* 2. Comprehensive Advisory Practice Areas */}
+        <AdvisoryServicesSection onNavigate={onNavigate} />
+        
+
+       
         {/* 2. Signature Transformation Architecture Methodology */}
         <MethodologySection />
+          {/* 3. Structured Engagement Process */}
+        <EngagementProcessSection />
+        
+        {/* 4. Coaching and Mentoring Executive Box */}
+        <CoachingSection onNavigate={onNavigate} onOpenContact={onOpenContact} />
 
-        {/* 3. Why Choose Us / Differentiators */}
+        {/* 5. Why Choose Us / Differentiators */}
         <WhyChooseUsSection />
 
-        {/* 4. Structured Engagement Process */}
-        <EngagementProcessSection />
+       
 
         {/* 5. Operational Excellence Projects Portfolio */}
        
 
-        {/* 6. Comprehensive Advisory Practice Areas */}
-        <AdvisoryServicesSection onNavigate={onNavigate} />
 
         {/* 7. Honors & Executive Awards */}
         <AwardsSection />
@@ -62,7 +72,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
         {/* 8. Trust Indicators Bar */}
         <TrustBadgesBar />
 
-        {/* 9. Main Action CTA Banner */}
+        {/* 9. Get In Touch Executive Contact Section */}
+        <GetInTouchSection />
+
+        {/* 10. Main Action CTA Banner */}
         <CtaSection onNavigate={onNavigate} onOpenContact={onOpenContact} />
       </main>
 
